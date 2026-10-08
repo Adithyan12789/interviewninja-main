@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create StatisticsSummary component with 4 stat cards",
+  "status": "pending",
+  "steps": [
+    "Create components/StatisticsSummary.tsx",
+    "Define props interface inline: { stats: { totalInterviewsTaken, averageScore, highestScore, mostPracticedRole } }",
+    "Implement 4 stat cards in responsive grid using existing card styling patterns",
+    "Use lucide-react icons: ClipboardList, TrendingUp, Trophy, Briefcase",
+    "Format numbers: averageScore and highestScore to 1 decimal place",
+    "Display 'N/A' for mostPracticedRole if null",
+    "Style matching existing card components (card-border, dark-gradient classes)"
+  ],
+  "acceptance_criteria": [
+    "StatisticsSummary.tsx file exists with proper React component",
+    "Component renders 4 stat cards with correct icons and labels",
+    "Numbers formatted correctly (1 decimal place for scores)",
+    "Handles null mostPracticedRole gracefully",
+    "Uses consistent styling with existing UI components"
+  ],
+  "verification": [
+    "Create temporary test file to render component with dummy data",
+    "Check component renders correctly in browser",
+    "Run 'npm run build' - no TypeScript errors"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

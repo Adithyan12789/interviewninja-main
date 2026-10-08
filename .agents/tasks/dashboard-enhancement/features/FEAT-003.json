@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Create SkillRadar component with horizontal progress bars for 5 categories",
+  "status": "pending",
+  "steps": [
+    "Create components/SkillRadar.tsx",
+    "Define props interface inline: { categoryAverages: Array<{name: string, average: number}> }",
+    "Render 5 horizontal progress bars (one per category) in defined order: Communication Skills, Technical Knowledge, Problem Solving, Cultural Fit, Confidence and Clarity",
+    "Use existing '.progress' CSS utility class with inline style for width: style={{ width: \`\${average}%\` }}",
+    "Display category name, percentage bar, and numeric score (0-100)",
+    "Ensure proper spacing and layout"
+  ],
+  "acceptance_criteria": [
+    "SkillRadar.tsx file exists with proper React component",
+    "Component renders 5 progress bars in correct order",
+    "Progress bars show correct width percentages based on average scores",
+    "Category names and scores displayed correctly",
+    "Uses existing CSS utility classes for consistent styling"
+  ],
+  "verification": [
+    "Create temporary test file to render component with dummy category data",
+    "Check progress bars show correct widths in browser",
+    "Run 'npm run build' - no TypeScript errors"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

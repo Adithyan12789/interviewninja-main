@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StatisticsSummary Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #08090D;
+      color: white;
+    }
+    .test-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>StatisticsSummary Component Test</h1>
+    <div id="root"></div>
+  </div>
+  
+  <!-- Load React and component -->
+  <script src="https://unpkg.com/react@19/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@19/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <script type="text/babel">
+    // Mock lucide-react icons
+    const ClipboardList = () => '📋';
+    const TrendingUp = () => '📈';
+    const Trophy = () => '🏆';
+    const Briefcase = () => '💼';
+    
+    // Mock StatisticsSummary component
+    const StatisticsSummary = ({ stats }) => {
+      const { totalInterviewsTaken, averageScore, highestScore, mostPracticedRole } = stats;
+      
+      const statCards = [
+        {
+          label: "Total Interviews",
+          value: totalInterviewsTaken.toString(),
+          icon: ClipboardList,
+          description: "Interviews completed",
+        },
+        {
+          label: "Average Score",
+          value: averageScore.toFixed(1),
+          icon: TrendingUp,
+          description: "Your average performance",
+        },
+        {
+          label: "Highest Score",
+          value: highestScore.toFixed(1),
+          icon: Trophy,
+          description: "Personal best score",
+        },
+        {
+          label: "Most Practiced",
+          value: mostPracticedRole || "N/A",
+          icon: Briefcase,
+          description: "Most frequent role",
+        },
+      ];
+      
+      return React.createElement('div', {
+        className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full"
+      }, 
+        statCards.map((stat, index) => {
+          const Icon = stat.icon;
+          return React.createElement('div', {
+            key: index,
+            className: "border-2 border-gray-500 p-0.5 rounded-2xl"
+          }, 
+            React.createElement('div', {
+              className: "bg-gradient-to-b from-[#1A1C20] to-[#08090D] rounded-2xl p-6 flex flex-col gap-4 min-h-[180px]"
+            }, 
+              React.createElement('div', { className: "flex items-center justify-between" }, 
+                React.createElement('div', { className: "flex flex-col gap-2" }, 
+                  React.createElement('p', { className: "text-lg text-gray-400" }, stat.label),
+                  React.createElement('p', { className: "text-3xl font-bold text-white" }, stat.value),
+                  React.createElement('p', { className: "text-sm text-gray-500" }, stat.description)
+                ),
+                React.createElement('div', { className: "p-3 bg-white/5 rounded-lg" }, 
+                  React.createElement(Icon, { className: "w-6 h-6 text-white" })
+                )
+              )
+            )
+          );
+        })
+      );
+    };
+    
+    // Test data
+    const testStats = {
+      totalInterviewsTaken: 12,
+      averageScore: 78.5,
+      highestScore: 94.2,
+      mostPracticedRole: "Frontend Developer"
+    };
+    
+    const testStatsNull = {
+      totalInterviewsTaken: 0,
+      averageScore: 0,
+      highestScore: 0,
+      mostPracticedRole: null
+    };
+    
+    const App = () => {
+      return React.createElement('div', { className: "space-y-8" },
+        React.createElement('div', null,
+          React.createElement('h2', null, "With Normal Data:"),
+          React.createElement(StatisticsSummary, { stats: testStats })
+        ),
+        React.createElement('div', null,
+          React.createElement('h2', null, "With Null Data:"),
+          React.createElement(StatisticsSummary, { stats: testStatsNull })
+        )
+      );
+    };
+    
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+  </script>
+</body>
+</html>

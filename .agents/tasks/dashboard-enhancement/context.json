@@ -1,0 +1,22 @@
+{
+  "project_type": "Next.js 15 + React 19 application with Firebase backend",
+  "language": "TypeScript",
+  "build_system": "Next.js with Turbopack (npm run dev --turbopack)",
+  "test_framework": "No test framework configured (no test scripts in package.json)",
+  "build_command": "npm run build",
+  "test_command": "npm run lint",
+  "verification_instructions": "1. Run 'npm run build' to check for TypeScript errors. 2. Run 'npm run dev' and check the dashboard page loads with new components. 3. Run 'npm run lint' for code quality.",
+  "snapshot_or_generated_files": "None - this is a Next.js app with no generated files to check in.",
+  "environment_constraints": "Firebase admin SDK requires proper service account credentials. App uses server actions for data fetching.",
+  "contribution_requirements": "No specific contribution docs found. Follow existing code patterns in the codebase.",
+  "key_patterns": "1. Server actions in lib/actions/*.action.ts. 2. Components in components/*.tsx with inline TypeScript interfaces. 3. Global types in types/index.d.ts. 4. Card components use 'card-border' and 'dark-gradient' classes. 5. Progress bars use '.progress' CSS utility class.",
+  "relevant_files": [
+    "app/(root)/page.tsx",
+    "lib/actions/general.action.ts",
+    "components/InterviewCard.tsx",
+    "types/index.d.ts",
+    "constants/index.ts",
+    "app/globals.css"
+  ],
+  "directory_structure": "app/ - Next.js app router pages and layouts. components/ - React components. lib/ - utility functions and server actions. constants/ - schema definitions and constants. types/ - TypeScript type definitions. firebase/ - Firebase configuration."
+}

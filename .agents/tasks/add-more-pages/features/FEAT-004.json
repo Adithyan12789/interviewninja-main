@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-004",
+  "type": "feat",
+  "description": "Create Statistics/Analytics page at /stats with detailed analytics",
+  "status": "pending",
+  "steps": [
+    "Create app/(root)/stats/page.tsx as async Server Component",
+    "Fetch current user with getCurrentUser()",
+    "Fetch all feedback with getAllFeedbackByUserId(user.id)",
+    "Compute analytics: total interviews, average score, per-category breakdown",
+    "Display overall stats cards",
+    "Show category breakdown with progress bars using .progress CSS class",
+    "Aggregate strengths and areas for improvement across all feedback",
+    "Style page with section-feedback class"
+  ],
+  "acceptance_criteria": [
+    "Page loads at /stats URL",
+    "Shows correct total interviews count and average score",
+    "Displays per-category breakdown for all 5 feedback categories",
+    "Shows aggregated strengths list",
+    "Shows aggregated areas for improvement list",
+    "Uses progress bars for category scores"
+  ],
+  "verification": [
+    "npm run build completes without errors",
+    "Navigate to /stats shows all computed analytics",
+    "Category progress bars display correct widths based on scores"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

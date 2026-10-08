@@ -1,0 +1,24 @@
+{
+  "project_type": "Next.js 15 App Router with TypeScript, Firebase Firestore backend",
+  "language": "TypeScript",
+  "build_system": "Next.js with Turbopack dev, npm scripts",
+  "test_framework": "None detected (no test files found)",
+  "build_command": "npm run build",
+  "test_command": "npm run lint (only linting available)",
+  "verification_instructions": "1. Run 'npm run build' to ensure no TypeScript errors\n2. Run 'npm run dev' and manually test each new page\n3. Verify navigation links work correctly\n4. Check that all pages display correct user data and computed statistics",
+  "snapshot_or_generated_files": "No generated files to check in",
+  "environment_constraints": "Requires Firebase configuration to be set up (already configured in firebase/admin.ts)",
+  "contribution_requirements": "No specific AGENTS.md or CONTRIBUTING.md found. Follow existing code patterns.",
+  "key_patterns": "1. All pages are async Server Components under app/(root)/\n2. Data fetching via server actions in lib/actions/\n3. Styling uses existing CSS utility classes defined in globals.css\n4. All text must use text-white class\n5. Layout uses root-layout class\n6. Firebase Firestore used for data with db from firebase/admin",
+  "relevant_files": [
+    "app/(root)/page.tsx (dashboard pattern)",
+    "app/(root)/layout.tsx (navigation to update)",
+    "app/(root)/interview/[id]/feedback/page.tsx (feedback page pattern)",
+    "components/InterviewCard.tsx (card component pattern)",
+    "lib/actions/general.action.ts (add getAllFeedbackByUserId)",
+    "lib/actions/auth.action.ts (getCurrentUser pattern)",
+    "app/globals.css (CSS utility classes)",
+    "constants/index.ts (feedbackSchema categories)"
+  ],
+  "directory_structure": "app/(root)/ - main authenticated pages\napp/(auth)/ - authentication pages\ncomponents/ - reusable components\nlib/actions/ - server actions\nconstants/ - constants and schemas\ntypes/ - TypeScript definitions\npublic/ - static assets"
+}

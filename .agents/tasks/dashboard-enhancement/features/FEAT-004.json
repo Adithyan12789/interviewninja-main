@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-004",
+  "type": "feat",
+  "description": "Create RecommendationCard component showing weakest category with motivational tip",
+  "status": "pending",
+  "steps": [
+    "Create components/RecommendationCard.tsx",
+    "Define props interface inline: { weakestCategory: { name: string, score: number } }",
+    "Determine motivational message based on category name (e.g., 'Focus on improving your Communication Skills' for Communication Skills)",
+    "Include link to start new interview (href=\"/interview\") with appropriate button styling",
+    "Style matching existing call-to-action cards in the dashboard",
+    "Handle edge cases (all scores equal, etc.)"
+  ],
+  "acceptance_criteria": [
+    "RecommendationCard.tsx file exists with proper React component",
+    "Component displays category-specific motivational message",
+    "Includes working link to start new interview",
+    "Uses consistent styling with existing UI",
+    "Handles different weakest categories appropriately"
+  ],
+  "verification": [
+    "Create temporary test file to render component with different weakest categories",
+    "Check messages change based on category",
+    "Verify link works correctly",
+    "Run 'npm run build' - no TypeScript errors"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

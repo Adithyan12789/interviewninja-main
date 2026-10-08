@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-005",
+  "type": "feat",
+  "description": "Integrate all new components into dashboard page with proper data flow",
+  "status": "pending",
+  "steps": [
+    "Update app/(root)/page.tsx to add getUserStats to Promise.all call",
+    "Import and render StatisticsSummary, SkillRadar, and RecommendationCard components",
+    "Fix typo in heading: 'Your Interviews' instead of 'Your Inteviews'",
+    "Arrange sections in order: 1. StatisticsSummary, 2. SkillRadar, 3. RecommendationCard, 4. Existing hero CTA, 5. Your Interviews, 6. Take an Interview",
+    "Handle empty states: each new section renders null if userStats is null",
+    "Compute weakest category from categoryAverages for RecommendationCard"
+  ],
+  "acceptance_criteria": [
+    "Dashboard page fetches userStats along with other data",
+    "All new components render when stats exist",
+    "Components don't render when stats are null (clean UI)",
+    "Section order is correct",
+    "Typo in heading is fixed",
+    "Weakest category correctly identified for recommendation"
+  ],
+  "verification": [
+    "Run 'npm run dev' and check dashboard loads with new sections",
+    "Test with user that has no feedback (should show clean UI)",
+    "Test with user that has feedback (should show all new sections)",
+    "Run 'npm run build' - no TypeScript errors",
+    "Run 'npm run lint' - no linting errors"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-003",
+  "type": "feat",
+  "description": "Create Interview History page at /history listing all past interviews",
+  "status": "pending",
+  "steps": [
+    "Create app/(root)/history/page.tsx as async Server Component",
+    "Fetch current user with getCurrentUser()",
+    "Fetch all feedback with getAllFeedbackByUserId(user.id)",
+    "Map feedback data to InterviewCard props: id, role, type, techstack, createdAt",
+    "Render grid of InterviewCard components using interviews-section class",
+    "Add page header and empty state message for no interviews",
+    "Ensure all InterviewCard components display feedback scores and dates"
+  ],
+  "acceptance_criteria": [
+    "Page loads at /history URL",
+    "Displays all past interviews with scores and dates",
+    "Uses existing InterviewCard component pattern",
+    "Shows empty state message when no interviews exist",
+    "Cards link to correct feedback pages"
+  ],
+  "verification": [
+    "npm run build completes without errors",
+    "Navigate to /history shows interview cards with scores",
+    "Cards display correct dates formatted with dayjs"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

@@ -1,0 +1,23 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Add getUserStats server action and required type definitions",
+  "status": "completed",
+  "steps": [
+    "Add UserStats interface to types/index.d.ts with: totalInterviewsTaken (number), averageScore (number), highestScore (number), mostPracticedRole (string | null), categoryAverages (Array<{name: string, average: number}>)",
+    "Add getUserStats function to lib/actions/general.action.ts that: queries all feedback documents for userId, computes aggregates (count, average totalScore, max totalScore), fetches interviews to determine most frequent role, computes category averages across all feedback, returns null if no feedback exists",
+    "Test the function by adding temporary console.log or checking it returns expected data shape"
+  ],
+  "acceptance_criteria": [
+    "getUserStats function exists in general.action.ts with correct signature",
+    "UserStats interface is defined in types/index.d.ts",
+    "Function returns null when no feedback exists for user",
+    "Function computes correct aggregates when feedback exists"
+  ],
+  "verification": [
+    "Run 'npm run build' - should succeed without TypeScript errors",
+    "Check function can be imported and called without runtime errors"
+  ],
+  "blocked_reason": null,
+  "findings": "Successfully implemented UserStats interface and getUserStats function. TypeScript compilation passes (npx tsc --noEmit). Build has a pre-existing error unrelated to this feature (missing /api/vapi/generate route). Created test file test-user-stats.ts to verify function returns expected data shape."
+}

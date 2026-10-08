@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create User Profile page at /profile showing user info and basic stats",
+  "status": "pending",
+  "steps": [
+    "Create app/(root)/profile/page.tsx as async Server Component",
+    "Fetch current user with getCurrentUser() from auth.action",
+    "Fetch all feedback with getAllFeedbackByUserId(user.id)",
+    "Compute stats: total interviews count and average score",
+    "Display user info (name, email) and stats summary",
+    "Add back to dashboard link using btn-primary class",
+    "Style page with section-feedback class for consistent layout"
+  ],
+  "acceptance_criteria": [
+    "Page loads at /profile URL",
+    "Displays current user's name and email",
+    "Shows correct total interviews count and average score",
+    "Back to dashboard link works correctly",
+    "Uses text-white class for all text"
+  ],
+  "verification": [
+    "npm run build completes without errors",
+    "Navigate to /profile shows user info and stats",
+    "Back link redirects to dashboard correctly"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

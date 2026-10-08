@@ -1,0 +1,7 @@
+{
+  "task_id": "task-add-more-pages",
+  "task_description": "Add three new pages (Profile, History, Statistics) and update navigation for InterviewNinja project",
+  "status": "pending",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003", "FEAT-004"],
+  "blocked_reason": null
+}
