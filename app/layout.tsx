@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mona_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import ConsoleFilter from "@/components/ConsoleFilter";
 
 const monaSans = Mona_Sans({
   variable: "--font-mono-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${monaSans.className} antialiased pattern`}
       >
+        <ConsoleFilter />
         {children}
 
         <Toaster/>
