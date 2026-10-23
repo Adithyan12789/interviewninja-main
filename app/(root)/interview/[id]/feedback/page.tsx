@@ -27,19 +27,28 @@ const Feedback = async ({ params }: RouteParams) => {
 
   return (
     <section className="section-feedback">
-      <div className="flex flex-row justify-center">
-        <h1 className="text-4xl font-semibold text-white">
+      <div className="flex flex-row justify-center animate-slide-up">
+        <h1 className="text-4xl font-bold gradient-text-primary text-center">
           Feedback on the Interview -{" "}
-          <span className="capitalize text-white">{interview.role}</span> Interview
+          <span className="capitalize gradient-text-secondary">{interview.role}</span> Interview
         </h1>
       </div>
 
       {/* Overall Score Display */}
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center gap-6 animate-scale-in">
         <div className="flex flex-col items-center gap-4">
           <div className="relative flex items-center justify-center">
-            {/* Large score circle */}
-            <div className="w-32 h-32 rounded-full border-8 flex items-center justify-center"
+            {/* Large score circle with glow effect */}
+            <div className="absolute -inset-2 rounded-full opacity-50 blur-xl animate-glow"
+              style={{
+                background: feedback?.totalScore ? (
+                  feedback.totalScore >= 70 ? "radial-gradient(circle, rgba(73,222,80,0.6) 0%, transparent 70%)" :
+                  feedback.totalScore >= 50 ? "radial-gradient(circle, rgba(245,166,35,0.6) 0%, transparent 70%)" :
+                  "radial-gradient(circle, rgba(247,83,83,0.6) 0%, transparent 70%)"
+                ) : "none"
+              }}
+            />
+            <div className="relative w-40 h-40 rounded-full border-8 flex items-center justify-center glass-card"
               style={{
                 borderColor: feedback?.totalScore ? (
                   feedback.totalScore >= 70 ? "#49de50" :
@@ -48,7 +57,7 @@ const Feedback = async ({ params }: RouteParams) => {
               }}
             >
               <div className="text-center">
-                <div className="score-large" style={{
+                <div className="text-7xl font-bold" style={{
                   color: feedback?.totalScore ? (
                     feedback.totalScore >= 70 ? "#49de50" :
                     feedback.totalScore >= 50 ? "#f5a623" : "#f75353"
@@ -56,13 +65,13 @@ const Feedback = async ({ params }: RouteParams) => {
                 }}>
                   {feedback?.totalScore || 0}
                 </div>
-                <div className="score-label">/100</div>
+                <div className="score-label text-xl">/100</div>
               </div>
             </div>
           </div>
           
           <div className="flex flex-row gap-5 items-center">
-            <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-row gap-2 items-center glass-panel px-3 py-2">
               <Image src="/star.svg" width={22} height={22} alt="star" />
               <p className="text-white">
                 Overall Impression
@@ -70,7 +79,7 @@ const Feedback = async ({ params }: RouteParams) => {
             </div>
 
             {/* Date */}
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-2 glass-panel px-3 py-2">
               <Image src="/calendar.svg" width={22} height={22} alt="calendar" />
               <p className="text-white">
                 {feedback?.createdAt
@@ -82,46 +91,48 @@ const Feedback = async ({ params }: RouteParams) => {
         </div>
       </div>
 
-      <hr />
+      <hr className="border-white/10" />
 
       {/* Final Assessment */}
-      <div className="highlight-box">
-        <h3 className="text-white text-xl font-semibold mb-4">Final Assessment</h3>
-        <p className="text-white">{feedback?.finalAssessment}</p>
+      <div className="highlight-box animate-slide-up">
+        <h3 className="text-2xl font-bold gradient-text-secondary mb-4">Final Assessment</h3>
+        <p className="text-gray-300 leading-relaxed">{feedback?.finalAssessment}</p>
       </div>
 
       {/* Score Breakdown Chart */}
       {feedback?.categoryScores && (
-        <ScoreBreakdownChart categoryScores={feedback.categoryScores} />
+        <div className="animate-slide-up">
+          <ScoreBreakdownChart categoryScores={feedback.categoryScores} />
+        </div>
       )}
 
       {/* Strengths */}
       {feedback?.strengths && feedback.strengths.length > 0 && (
-        <StrengthsBadges strengths={feedback.strengths} />
+        <div className="animate-slide-up">
+          <StrengthsBadges strengths={feedback.strengths} />
+        </div>
       )}
 
       {/* Areas for Improvement */}
       {feedback?.areasForImprovement && feedback.areasForImprovement.length > 0 && (
-        <ImprovementChecklist areas={feedback.areasForImprovement} />
+        <div className="animate-slide-up">
+          <ImprovementChecklist areas={feedback.areasForImprovement} />
+        </div>
       )}
 
-      <div className="buttons">
-        <Button className="btn-secondary flex-1">
+      <div className="buttons animate-slide-up">
+        <Button className="flex-1 text-sm font-semibold bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-800 hover:to-gray-700 text-white rounded-full px-5 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
           <Link href="/" className="flex w-full justify-center">
-            <p className="text-sm font-semibold bg-white w-fit hover:bg-black hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10">
-              Back to dashboard
-            </p>
+            Back to dashboard
           </Link>
         </Button>
 
-        <Button className="btn-primary flex-1">
+        <Button className="flex-1 text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full px-5 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
           <Link
             href={`/interview/${id}`}
             className="flex w-full justify-center"
           >
-            <p className="text-sm font-semibold bg-white w-fit hover:bg-black hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10">
-              Retake Interview
-            </p>
+            Retake Interview
           </Link>
         </Button>
       </div>

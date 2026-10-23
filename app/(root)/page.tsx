@@ -36,16 +36,17 @@ const page = async () => {
     <>
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
-          <h2 className="text-white">
+          <h2 className="text-4xl font-bold gradient-text-primary animate-slide-up">
             Get Interview-Ready with AI-Powered Practice & Feedback
           </h2>
-          <p className="text-lg text-white">
+          <p className="text-lg text-gray-300 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Practice on real interview questions & get instant feedback
           </p>
 
           <Button
             asChild
-            className="text-sm font-semibold bg-white w-fit hover:bg-black hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10"
+            className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 w-fit text-white rounded-full px-8 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-scale-in"
+            style={{ animationDelay: '0.2s' }}
           >
             <Link href="/interview">Start An Interview</Link>
           </Button>
@@ -56,20 +57,21 @@ const page = async () => {
           alt="Robot"
           width={400}
           height={400}
-          className="hidden sm:block"
+          className="hidden sm:block animate-scale-in"
+          style={{ animationDelay: '0.3s' }}
         />
       </section>
 
       {/* Statistics Section */}
       {stats && (
-        <section className="flex flex-col gap-6 mt-8">
-          <h2 className="text-white">Your Performance Overview</h2>
+        <section className="flex flex-col gap-6 mt-8 animate-slide-up">
+          <h2 className="text-3xl font-bold gradient-text-secondary">Your Performance Overview</h2>
           <StatisticsSummary stats={stats} />
         </section>
       )}
 
-      <section className="flex flex-col gap-6 mt-8">
-        <h2 className="text-white">Your Inteviews</h2>
+      <section className="flex flex-col gap-6 mt-8 animate-slide-up">
+        <h2 className="text-3xl font-bold gradient-text-secondary">Your Inteviews</h2>
 
         <div className="interviews-section">
           {hasPastInterviews ? (
@@ -77,13 +79,13 @@ const page = async () => {
               <InterviewCard {...interview} key={interview.id} />
             ))
           ) : (
-            <p className="text-white">You Haven&apos;t taken any interviews yet</p>
+            <p className="text-gray-400">You Haven&apos;t taken any interviews yet</p>
           )}
         </div>
       </section>
 
-      <section className="flex flex-col gap-6 mt-8">
-        <h2 className="text-white">Take an Interview</h2>
+      <section className="flex flex-col gap-6 mt-8 animate-slide-up">
+        <h2 className="text-3xl font-bold gradient-text-secondary">Take an Interview</h2>
 
         <div className="interviews-section">
           {hasUpcomingInterviews ? (
@@ -91,7 +93,7 @@ const page = async () => {
               <InterviewCard {...interview} key={interview.id} />
             ))
           ) : (
-            <p>There are no new interviews available</p>
+            <p className="text-gray-400">There are no new interviews available</p>
           )}
         </div>
       </section>

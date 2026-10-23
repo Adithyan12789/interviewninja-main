@@ -45,16 +45,16 @@ const StatisticsSummary = ({ stats }: StatisticsSummaryProps) => {
       {statCards.map((stat, index) => {
         const Icon = stat.icon;
         return (
-          <div key={index} className="card-border">
-            <div className="dark-gradient rounded-2xl p-6 flex flex-col gap-4 min-h-[180px]">
+          <div key={index} className="card-border animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+            <div className="glass-card p-6 flex flex-col gap-4 min-h-[180px] bg-gradient-to-br from-white/5 to-white/[0.02] hover-lift group">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-2">
                   <p className="text-lg text-gray-400">{stat.label}</p>
-                  <p className="text-3xl font-bold text-white">{stat.value}</p>
+                  <p className="text-3xl font-bold gradient-text-secondary">{stat.value}</p>
                   <p className="text-sm text-gray-500">{stat.description}</p>
                 </div>
-                <div className="p-3 bg-white/5 rounded-lg">
-                  <Icon className="w-6 h-6 text-white" />
+                <div className="p-3 glass-panel group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 text-purple-400" />
                 </div>
               </div>
             </div>

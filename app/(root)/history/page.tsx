@@ -17,16 +17,16 @@ export default async function HistoryPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between animate-slide-up">
         <div>
-          <h2 className="text-white text-3xl font-bold">Interview History</h2>
+          <h2 className="text-4xl font-bold gradient-text-primary">Interview History</h2>
           <p className="text-gray-400 mt-2">
             View all your past interviews and performance
           </p>
         </div>
         <Button
           asChild
-          className="text-sm font-semibold bg-white w-fit hover:bg-gray-600 hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10"
+          className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full px-6 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
         >
           <Link href="/interview">New Interview</Link>
         </Button>
@@ -35,9 +35,9 @@ export default async function HistoryPage() {
       {feedbackHistory && feedbackHistory.length > 0 ? (
         <div className="flex flex-col gap-6">
           {/* Summary Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 animate-scale-in">
             <div className="card-border">
-              <div className="dark-gradient rounded-2xl p-6">
+              <div className="glass-card p-6 bg-gradient-to-br from-white/5 to-white/[0.02] hover-lift">
                 <p className="text-gray-400 text-sm">Total Interviews</p>
                 <p className="text-white text-3xl font-bold mt-2">
                   {feedbackHistory.length}
@@ -45,7 +45,7 @@ export default async function HistoryPage() {
               </div>
             </div>
             <div className="card-border">
-              <div className="dark-gradient rounded-2xl p-6">
+              <div className="glass-card p-6 bg-gradient-to-br from-white/5 to-white/[0.02] hover-lift">
                 <p className="text-gray-400 text-sm">Average Score</p>
                 <p className="text-white text-3xl font-bold mt-2">
                   {(
@@ -57,7 +57,7 @@ export default async function HistoryPage() {
               </div>
             </div>
             <div className="card-border">
-              <div className="dark-gradient rounded-2xl p-6">
+              <div className="glass-card p-6 bg-gradient-to-br from-white/5 to-white/[0.02] hover-lift">
                 <p className="text-gray-400 text-sm">Highest Score</p>
                 <p className="text-white text-3xl font-bold mt-2">
                   {Math.max(...feedbackHistory.map((f) => f.totalScore))}/100
@@ -67,8 +67,8 @@ export default async function HistoryPage() {
           </div>
 
           {/* History List */}
-          <div>
-            <h3 className="text-white text-xl font-bold mb-4">All Interviews</h3>
+          <div className="animate-slide-up">
+            <h3 className="text-2xl font-bold gradient-text-secondary mb-4">All Interviews</h3>
             <div className="interviews-section">
               {feedbackHistory.map((feedback) => {
                 const interview = feedback.interview;
@@ -89,8 +89,8 @@ export default async function HistoryPage() {
           </div>
         </div>
       ) : (
-        <div className="card-border">
-          <div className="dark-gradient rounded-2xl p-12 text-center">
+        <div className="card-border animate-scale-in">
+          <div className="glass-card p-12 text-center bg-gradient-to-br from-white/5 to-white/[0.02]">
             <div className="flex flex-col items-center gap-4">
               <Image
                 src="/robot.png"
@@ -98,7 +98,7 @@ export default async function HistoryPage() {
                 width={200}
                 height={200}
               />
-              <h3 className="text-white text-xl font-bold">
+              <h3 className="text-2xl font-bold gradient-text-secondary">
                 No Interview History Yet
               </h3>
               <p className="text-gray-400 max-w-md">
@@ -107,7 +107,7 @@ export default async function HistoryPage() {
               </p>
               <Button
                 asChild
-                className="mt-4 text-sm font-semibold bg-white w-fit hover:bg-gray-600 hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10"
+                className="mt-4 text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full px-6 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 <Link href="/interview">Start Your First Interview</Link>
               </Button>

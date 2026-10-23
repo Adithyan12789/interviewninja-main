@@ -18,9 +18,9 @@ export default async function StatisticsPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between animate-slide-up">
         <div>
-          <h2 className="text-white text-3xl font-bold">Statistics & Analytics</h2>
+          <h2 className="text-4xl font-bold gradient-text-primary">Statistics & Analytics</h2>
           <p className="text-gray-400 mt-2">
             Track your progress and identify areas for improvement
           </p>
@@ -30,14 +30,14 @@ export default async function StatisticsPage() {
       {stats ? (
         <div className="flex flex-col gap-8">
           {/* Overall Statistics */}
-          <div>
-            <h3 className="text-white text-xl font-bold mb-4">Overall Performance</h3>
+          <div className="animate-scale-in">
+            <h3 className="text-2xl font-bold gradient-text-secondary mb-4">Overall Performance</h3>
             <StatisticsSummary stats={stats} />
           </div>
 
           {/* Category Breakdown */}
-          <div>
-            <h3 className="text-white text-xl font-bold mb-4">
+          <div className="animate-slide-up">
+            <h3 className="text-2xl font-bold gradient-text-secondary mb-4">
               Performance by Category
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -48,7 +48,7 @@ export default async function StatisticsPage() {
 
                 return (
                   <div key={index} className="card-border">
-                    <div className="dark-gradient rounded-2xl p-6">
+                    <div className="glass-card p-6 bg-gradient-to-br from-white/5 to-white/[0.02] hover-lift">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="text-white font-semibold">
                           {category.name}
@@ -89,11 +89,11 @@ export default async function StatisticsPage() {
 
           {/* Strengths & Improvements */}
           {feedbackHistory && feedbackHistory.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up">
               {/* Top Strengths */}
               <div className="card-border">
-                <div className="dark-gradient rounded-2xl p-6">
-                  <h3 className="text-white text-xl font-bold mb-4">
+                <div className="glass-card p-6 bg-gradient-to-br from-green-900/10 to-emerald-900/10 hover-lift">
+                  <h3 className="text-2xl font-bold gradient-text-secondary mb-4">
                     Common Strengths
                   </h3>
                   <div className="flex flex-col gap-3">
@@ -104,9 +104,9 @@ export default async function StatisticsPage() {
                     ).map((strength, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-3 bg-white/5 rounded-lg"
+                        className="flex items-center gap-3 p-3 glass-panel hover-lift"
                       >
-                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                        <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(73,222,80,0.5)]" />
                         <p className="text-white text-sm">{strength}</p>
                       </div>
                     ))}
@@ -116,8 +116,8 @@ export default async function StatisticsPage() {
 
               {/* Areas for Improvement */}
               <div className="card-border">
-                <div className="dark-gradient rounded-2xl p-6">
-                  <h3 className="text-white text-xl font-bold mb-4">
+                <div className="glass-card p-6 bg-gradient-to-br from-orange-900/10 to-red-900/10 hover-lift">
+                  <h3 className="text-2xl font-bold gradient-text-secondary mb-4">
                     Areas to Focus On
                   </h3>
                   <div className="flex flex-col gap-3">
@@ -130,9 +130,9 @@ export default async function StatisticsPage() {
                     ).map((area, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-3 bg-white/5 rounded-lg"
+                        className="flex items-center gap-3 p-3 glass-panel hover-lift"
                       >
-                        <div className="w-2 h-2 rounded-full bg-orange-500" />
+                        <div className="w-2 h-2 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(245,166,35,0.5)]" />
                         <p className="text-white text-sm">{area}</p>
                       </div>
                     ))}
@@ -143,8 +143,8 @@ export default async function StatisticsPage() {
           )}
         </div>
       ) : (
-        <div className="card-border">
-          <div className="dark-gradient rounded-2xl p-12 text-center">
+        <div className="card-border animate-scale-in">
+          <div className="glass-card p-12 text-center bg-gradient-to-br from-white/5 to-white/[0.02]">
             <div className="flex flex-col items-center gap-4">
               <Image
                 src="/robot.png"
@@ -152,7 +152,7 @@ export default async function StatisticsPage() {
                 width={200}
                 height={200}
               />
-              <h3 className="text-white text-xl font-bold">
+              <h3 className="text-2xl font-bold gradient-text-secondary">
                 No Statistics Available Yet
               </h3>
               <p className="text-gray-400 max-w-md">
@@ -161,7 +161,7 @@ export default async function StatisticsPage() {
               </p>
               <Button
                 asChild
-                className="mt-4 text-sm font-semibold bg-white w-fit hover:bg-gray-600 hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10"
+                className="mt-4 text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full px-6 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 <Link href="/interview">Start Your First Interview</Link>
               </Button>

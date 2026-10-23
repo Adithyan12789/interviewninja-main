@@ -161,40 +161,46 @@ const Agent = ({
 
   return (
     <>
-      <div className="call-view">
+      <div className="call-view animate-slide-up">
         <div className="card-interviewer">
-          <div className="avatar">
+          <div className="avatar relative">
+            {isSpeaking && (
+              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-75 blur-xl animate-glow"></div>
+            )}
             <Image
               src="/ai-avatar.png"
               alt="Vapi"
               width={65}
               height={54}
-              className="object-cover"
+              className="relative object-cover z-10"
             />
             {isSpeaking && <span className="animate-speak"></span>}
           </div>
 
-          <h3 className="text-white">AI Interviewer</h3>
+          <h3 className="text-white font-semibold">AI Interviewer</h3>
         </div>
 
         <div className="card-border">
-          <div className="card-content">
-            <Image
-              src={userPhoto || "/user-avatar.png"}
-              alt="User Avatar"
-              width={540}
-              height={540}
-              className="object-cover rounded-full size-[120px]"
-            />
+          <div className="card-content bg-gradient-to-br from-white/5 to-white/[0.02]">
+            <div className="relative">
+              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-50 blur"></div>
+              <Image
+                src={userPhoto || "/user-avatar.png"}
+                alt="User Avatar"
+                width={120}
+                height={120}
+                className="relative object-cover rounded-full size-[120px]"
+              />
+            </div>
 
-            <h3>{userName}</h3>
+            <h3 className="font-semibold gradient-text-secondary">{userName}</h3>
           </div>
         </div>
       </div>
 
       {messages.length > 0 && (
-        <div className="transcript-border">
-          <div className="transcript">
+        <div className="transcript-border animate-slide-up">
+          <div className="transcript glass-card">
             <p
               key={lastestMessage}
               className={cn(
@@ -208,7 +214,7 @@ const Agent = ({
         </div>
       )}
 
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center animate-scale-in">
         {callStatus !== "ACTIVE" ? (
           <button className="relative btn-call" onClick={handleCall}>
             <span

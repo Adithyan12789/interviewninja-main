@@ -8,9 +8,11 @@ const page = async () => {
 
   return (
     <>
-      <h2 className='text-white'>Interview Generation</h2>
+      <h2 className='text-4xl font-bold gradient-text-primary mb-8 animate-slide-up'>Interview Generation</h2>
 
-      <Agent userName={user?.name ?? ''} userId={user?.id} userPhoto={user?.photoURL} type="generate"/>
+      <div className="glass-card p-8 bg-gradient-to-br from-white/5 to-white/[0.02] animate-scale-in">
+        <Agent userName={user?.name ?? ''} userId={user?.id} userPhoto={user?.photoURL} type="generate"/>
+      </div>
     </>
   )
 }

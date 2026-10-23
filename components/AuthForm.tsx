@@ -95,14 +95,14 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const isSignIn = type === "sign-in";
 
   return (
-    <div className="card-border lg:min-w-[566px]">
-      <div className="flex flex-col gap-6 card py-14 px-10">
-        <div className="flex flex-row gap-2 justify-center">
+    <div className="card-border lg:min-w-[566px] animate-scale-in">
+      <div className="flex flex-col gap-6 glass-card py-14 px-10 bg-gradient-to-br from-white/5 to-white/[0.02]">
+        <div className="flex flex-row gap-2 justify-center items-center">
           <Image src="/logo.svg" alt="Logo" width={38} height={32} />
-          <h2 className="text-white">Interview Ninja</h2>
+          <h2 className="text-3xl font-bold gradient-text-primary">Interview Ninja</h2>
         </div>
 
-        <h3 className="text-center text-white">Practice job interview with AI</h3>
+        <h3 className="text-center text-gray-300 text-lg">Practice job interview with AI</h3>
 
         <Form {...form}>
           <form
@@ -131,17 +131,17 @@ const AuthForm = ({ type }: { type: FormType }) => {
               placeholder="Enter your password"
               type="password"
             />
-            <Button className="btn" type="submit">
+            <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full min-h-12 font-bold px-5 cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300" type="submit">
               {isSignIn ? "Sign In" : "Create An Account"}
             </Button>
           </form>
         </Form>
 
-        <p className="text-center text-white">
+        <p className="text-center text-gray-300">
           {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
           <Link
             href={isSignIn ? "/sign-up" : "/sign-in"}
-            className="text-white"
+            className="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-200"
           >
             {isSignIn ? "Sign Up" : "Sign In"}
           </Link>

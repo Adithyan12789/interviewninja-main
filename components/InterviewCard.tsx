@@ -38,44 +38,47 @@ const InterviewCard = async ({
 
   return (
     <div className="card-border w-[360px] max-sm:w-full min-h-96">
-      <div className="card-interview bg-red-900">
+      <div className="card-interview group">
         <div>
-          <div className="absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg bg-blue-950">
-            <p className="badge-text text-white">{normalizedType}</p>
+          <div className="absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-xl glass-panel">
+            <p className="badge-text text-white font-semibold">{normalizedType}</p>
           </div>
 
-          <Image
-            src={coverImage}
-            alt="cover image"
-            width={90}
-            height={90}
-            className="rounded-full object-fit size=[90px]"
-          />
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full opacity-75 blur group-hover:opacity-100 transition-opacity duration-300"></div>
+            <Image
+              src={coverImage}
+              alt="cover image"
+              width={90}
+              height={90}
+              className="relative rounded-full object-fit size-[90px]"
+            />
+          </div>
 
-          <h3 className="mt-5 capitalize text-white">{role} Interview</h3>
+          <h3 className="mt-5 capitalize text-xl font-bold gradient-text-secondary">{role} Interview</h3>
 
           <div className="flex flex-row gap-5 mt-3">
-            <div className="flex flex-row gap-2">
-              <Image src="/calendar.svg" alt="calendar icon" width={22} height={22} />
-              <p className="text-white">{formattedDate}</p>
+            <div className="flex flex-row gap-2 glass-panel px-2 py-1 rounded-lg">
+              <Image src="/calendar.svg" alt="calendar icon" width={18} height={18} />
+              <p className="text-gray-300 text-sm">{formattedDate}</p>
             </div>
 
-            <div className="flex flex-row gap-2">
-              <Image src="/star.svg" alt="star icon" width={22} height={22} />
-              <p className="text-white">{feedback?.totalScore || "---"}/100</p>
+            <div className="flex flex-row gap-2 glass-panel px-2 py-1 rounded-lg">
+              <Image src="/star.svg" alt="star icon" width={18} height={18} />
+              <p className="text-gray-300 text-sm">{feedback?.totalScore || "---"}/100</p>
             </div>
           </div>
 
-          <p className="line-clamp-2 mt-5 text-white">
+          <p className="line-clamp-2 mt-5 text-gray-300 leading-relaxed">
             {feedback?.finalAssessment ||
               "You haven't taken the interview yet. Take it now to improve your skills!"}
           </p>
         </div>
 
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between items-center">
           <DisplayTechIcons techStack={techstack} />
 
-          <Button className="text-sm font-semibold w-fit hover:bg-gray-600 hover:text-white rounded-full px-5 py-3 cursor-pointer min-h-10 bg-white">
+          <Button className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full px-5 py-3 cursor-pointer min-h-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
             <Link
               className="font-bold"
               href={feedback ? `/interview/${id}/feedback` : `/interview/${id}`}
