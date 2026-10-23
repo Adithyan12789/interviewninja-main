@@ -48,7 +48,12 @@ const Agent = ({
     const onSpeechStart = () => setIsSpeaking(true);
     const onSpeechEnd = () => setIsSpeaking(false);
 
-    const onError = (error: Error) => console.error("Error in call:", error);
+    const onError = (error: Error) => {
+      // Only log meaningful errors, suppress expected ones
+      if (error && error.message && !error.message.includes("Meeting has ended")) {
+        console.error("Call error:", error.message);
+      }
+    };
 
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);

@@ -87,7 +87,15 @@ const AuthForm = ({ type }: { type: FormType }) => {
         router.push("/");
       }
     } catch (error: unknown) {
-      console.error("Auth error:", error);
+      // Suppress console error for expected auth failures
+      if (error && typeof error === "object" && "code" in error) {
+        const firebaseError = error as { code: string };
+        
+        // Only log unexpected errors
+        if (!firebaseError.code.startsWith("auth/")) {
+          console.error("Auth error:", error);
+        }
+      }
       
       // User-friendly error messages
       let errorMessage = "Something went wrong. Please try again.";
