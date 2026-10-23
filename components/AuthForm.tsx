@@ -86,9 +86,49 @@ const AuthForm = ({ type }: { type: FormType }) => {
         console.log("Sign In Values:", values);
         router.push("/");
       }
-    } catch (error) {
-      console.log(error);
-      toast.error(`There was an error: ${error}`, { id: toastId });
+    } catch (error: unknown) {
+      console.error("Auth error:", error);
+      
+      // User-friendly error messages
+      let errorMessage = "Something went wrong. Please try again.";
+      
+      // Type guard to check if error has a code property
+      if (error && typeof error === "object" && "code" in error) {
+        const firebaseError = error as { code: string };
+        
+        switch (firebaseError.code) {
+          case "auth/invalid-credential":
+          case "auth/wrong-password":
+          case "auth/user-not-found":
+            errorMessage = "Invalid email or password. Please check your credentials and try again.";
+            break;
+          case "auth/email-already-in-use":
+            errorMessage = "This email is already registered. Please sign in instead.";
+            break;
+          case "auth/weak-password":
+            errorMessage = "Password is too weak. Please use a stronger password.";
+            break;
+          case "auth/invalid-email":
+            errorMessage = "Invalid email address. Please check and try again.";
+            break;
+          case "auth/network-request-failed":
+            errorMessage = "Network error. Please check your internet connection.";
+            break;
+          case "auth/too-many-requests":
+            errorMessage = "Too many failed attempts. Please try again later.";
+            break;
+          case "auth/operation-not-allowed":
+            errorMessage = "This sign-in method is not enabled. Please contact support.";
+            break;
+          case "auth/user-disabled":
+            errorMessage = "This account has been disabled. Please contact support.";
+            break;
+          default:
+            errorMessage = "Unable to complete the request. Please try again later.";
+        }
+      }
+      
+      toast.error(errorMessage, { id: toastId });
     }
   }
 
