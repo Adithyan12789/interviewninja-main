@@ -33,28 +33,37 @@ const page = () => {
 
           {/* Main Heading */}
           <div className="flex-1 flex flex-col justify-center max-w-lg">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              DISCOVER THE
-              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#cac5fe] to-[#a8a4ff]">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+              <span className="text-white">DISCOVER</span>
+              <br />
+              <span className="text-white">THE</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#cac5fe] to-[#a8a4ff]">
                 NEXT ERA
               </span>
-              OF INTERVIEWS.
+              <br />
+              <span className="text-white">OF INTERVIEWS</span>
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              Join thousands of professionals mastering their interview skills with AI-powered practice, instant feedback, and personalized guidance.
+            <p className="text-lg text-gray-400 leading-relaxed font-light">
+              Master your interview skills with AI-powered practice, instant feedback, and personalized guidance.
             </p>
           </div>
 
           {/* Bottom Info */}
           <div className="flex items-center gap-4">
-            <div className="flex -space-x-2">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 border-2 border-[#1a1a2e]"></div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 border-2 border-[#1a1a2e]"></div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 border-2 border-[#1a1a2e]"></div>
+            <div className="flex -space-x-3">
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 border-2 border-[#1a1a2e] flex items-center justify-center text-white text-xs font-semibold">
+                JD
+              </div>
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 border-2 border-[#1a1a2e] flex items-center justify-center text-white text-xs font-semibold">
+                SM
+              </div>
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 border-2 border-[#1a1a2e] flex items-center justify-center text-white text-xs font-semibold">
+                AK
+              </div>
             </div>
             <div className="text-sm">
-              <p className="font-semibold">Join 10,000+ Users</p>
-              <p className="text-gray-400">Mastering Their Interview Skills</p>
+              <p className="font-semibold text-white">10,000+ Active Users</p>
+              <p className="text-gray-400 font-light">Practicing daily</p>
             </div>
           </div>
         </div>
