@@ -7,6 +7,7 @@ import { vapi } from "@/lib/vapi.sdk";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 enum Callstatus {
   CONNECTING = "CONNECTING",
@@ -70,6 +71,8 @@ const Agent = ({
     async (messages: SavedMessage[]) => {
       console.log("Generate feedback here.");
 
+      const toastId = toast.loading("Generating your feedback...");
+
       const { success, feedbackId: id } = await createFeedback({
         interviewId: interviewId!,
         userId: userId!,
@@ -77,9 +80,11 @@ const Agent = ({
       })
 
       if (success && id) {
+        toast.success("Feedback generated successfully!", { id: toastId });
         router.push(`/interview/${interviewId}/feedback`);
       } else {
         console.error("Error saving feedback:");
+        toast.error("Failed to generate feedback. Please try again.", { id: toastId });
         router.push("/");
       }
     },
@@ -97,6 +102,8 @@ const Agent = ({
   }, [messages, callStatus, type, userId, router, handleGenerateFeedback]);
 
   const handleCall = async () => {
+    const toastId = toast.loading("Connecting to AI interviewer...");
+    
     try {
       setCallStatus(Callstatus.CONNECTING);
       
@@ -129,15 +136,22 @@ const Agent = ({
           }
         );
       }
+      
+      toast.success("Connected! Interview started.", { id: toastId });
     } catch (error) {
       console.error("Error starting call:", error, JSON.stringify(error));
+      toast.error("Failed to connect to AI interviewer. Please try again.", { id: toastId });
+      setCallStatus(Callstatus.INACTIVE);
     }
   };
 
   const handleDisconnect = async () => {
+    toast.info("Ending call...");
     setCallStatus(Callstatus.FINISHED);
 
     await vapi.stop();
+    
+    toast.success("Call ended successfully");
   };
 
   const lastestMessage = messages[messages.length - 1]?.content;

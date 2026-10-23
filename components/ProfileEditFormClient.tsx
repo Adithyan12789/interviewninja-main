@@ -54,6 +54,8 @@ export default function ProfileEditFormClient({ user }: ProfileEditFormClientPro
     e.preventDefault();
     setIsLoading(true);
 
+    const toastId = toast.loading("Updating profile...");
+
     try {
       let hasChanges = false;
 
@@ -61,7 +63,7 @@ export default function ProfileEditFormClient({ user }: ProfileEditFormClientPro
       if (formData.name !== user.name) {
         const nameResult = await updateUserProfile(user.id, { name: formData.name });
         if (!nameResult.success) {
-          toast.error(nameResult.message || "Failed to update name");
+          toast.error(nameResult.message || "Failed to update name", { id: toastId });
           setIsLoading(false);
           return;
         }
@@ -72,7 +74,7 @@ export default function ProfileEditFormClient({ user }: ProfileEditFormClientPro
       if (formData.email !== user.email) {
         const emailResult = await updateUserEmail(user.id, formData.email);
         if (!emailResult.success) {
-          toast.error(emailResult.message || "Failed to update email");
+          toast.error(emailResult.message || "Failed to update email", { id: toastId });
           setIsLoading(false);
           return;
         }
@@ -80,16 +82,16 @@ export default function ProfileEditFormClient({ user }: ProfileEditFormClientPro
       }
 
       if (hasChanges) {
-        toast.success("Profile updated successfully!");
+        toast.success("Profile updated successfully!", { id: toastId });
         router.push("/profile");
         router.refresh();
       } else {
-        toast.info("No changes to save");
+        toast.info("No changes to save", { id: toastId });
         router.push("/profile");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      toast.error("Failed to update profile. Please try again.");
+      toast.error("Failed to update profile. Please try again.", { id: toastId });
     } finally {
       setIsLoading(false);
     }

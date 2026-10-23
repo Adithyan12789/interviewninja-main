@@ -37,8 +37,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    let toastId: string | number | undefined;
+    
     try {
       if (type === "sign-up") {
+        toastId = toast.loading("Creating your account...");
 
         const { name, email, password } = values;
 
@@ -52,17 +55,17 @@ const AuthForm = ({ type }: { type: FormType }) => {
         })
 
         if(!result?.success) {
-          toast.error(result?.message || "An error occurred while signing in.");
+          toast.error(result?.message || "An error occurred while signing up.", { id: toastId });
           return;
         }
 
-        router.push("/sign-in");
-
-        toast.success("Account created successfully! Please sign in.");
+        toast.success("Account created successfully! Please sign in.", { id: toastId });
         console.log("Sign Up Values:", values);
-
+        router.push("/sign-in");
         
       } else {
+        toastId = toast.loading("Signing in...");
+
         const { email, password } = values;
 
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -70,22 +73,22 @@ const AuthForm = ({ type }: { type: FormType }) => {
         const idToken = await userCredential.user.getIdToken();
 
         if(!idToken) {
-          toast.error("Failed to retrieve ID token. Please try again.");
+          toast.error("Failed to retrieve ID token. Please try again.", { id: toastId });
           return;
         }
 
-          await signIn({
+        await signIn({
           email,
           idToken,
-          })
+        })
 
-        toast.success("Sucessfully logged in!");
+        toast.success("Successfully logged in!", { id: toastId });
         console.log("Sign In Values:", values);
         router.push("/");
       }
     } catch (error) {
       console.log(error);
-      toast.error(`There was an error: ${error}`);
+      toast.error(`There was an error: ${error}`, { id: toastId });
     }
   }
 

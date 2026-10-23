@@ -13,19 +13,21 @@ export default function SignOutButton() {
 
   const handleSignOut = async () => {
     setIsLoading(true);
+    const toastId = toast.loading("Signing out...");
+    
     try {
       const result = await signOut();
       
       if (result.success) {
-        toast.success("Signed out successfully");
+        toast.success("Signed out successfully", { id: toastId });
         router.push("/sign-in");
         router.refresh();
       } else {
-        toast.error(result.message || "Failed to sign out");
+        toast.error(result.message || "Failed to sign out", { id: toastId });
       }
     } catch (error) {
       console.error("Sign out error:", error);
-      toast.error("Failed to sign out. Please try again.");
+      toast.error("Failed to sign out. Please try again.", { id: toastId });
     } finally {
       setIsLoading(false);
     }
