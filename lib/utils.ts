@@ -48,7 +48,54 @@ export const getRandomInterviewCover = () => {
 
 // Deterministic cover selection to prevent hydration errors
 export const getInterviewCover = (role: string, id?: string) => {
-  // Use role and id to generate a deterministic index
+  const roleLower = role.toLowerCase();
+  
+  // Company/brand mapping based on role keywords
+  const companyMappings: Record<string, string> = {
+    'spotify': '/covers/spotify.png',
+    'music': '/covers/spotify.png',
+    'audio': '/covers/spotify.png',
+    'skype': '/covers/skype.png',
+    'video': '/covers/skype.png',
+    'call': '/covers/skype.png',
+    'communication': '/covers/skype.png',
+    'adobe': '/covers/adobe.png',
+    'design': '/covers/adobe.png',
+    'creative': '/covers/adobe.png',
+    'photoshop': '/covers/adobe.png',
+    'amazon': '/covers/amazon.png',
+    'aws': '/covers/amazon.png',
+    'ecommerce': '/covers/amazon.png',
+    'facebook': '/covers/facebook.png',
+    'social': '/covers/facebook.png',
+    'meta': '/covers/facebook.png',
+    'hostinger': '/covers/hostinger.png',
+    'hosting': '/covers/hostinger.png',
+    'server': '/covers/hostinger.png',
+    'devops': '/covers/hostinger.png',
+    'pinterest': '/covers/pinterest.png',
+    'quora': '/covers/quora.png',
+    'community': '/covers/quora.png',
+    'reddit': '/covers/reddit.png',
+    'forum': '/covers/reddit.png',
+    'telegram': '/covers/telegram.png',
+    'messaging': '/covers/telegram.png',
+    'chat': '/covers/telegram.png',
+    'tiktok': '/covers/tiktok.png',
+    'video editor': '/covers/tiktok.png',
+    'content': '/covers/tiktok.png',
+    'yahoo': '/covers/yahoo.png',
+    'search': '/covers/yahoo.png',
+  };
+  
+  // Check for keyword matches in role
+  for (const [keyword, cover] of Object.entries(companyMappings)) {
+    if (roleLower.includes(keyword)) {
+      return cover;
+    }
+  }
+  
+  // Fallback: Use role and id to generate a deterministic index
   const seed = (role + (id || '')).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const index = seed % interviewCovers.length;
   return `/covers${interviewCovers[index]}`;
