@@ -24,9 +24,9 @@ const page = () => {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <Image src="/logo.svg" alt="Logo" width={48} height={48} />
-              <h2 className="text-2xl font-bold">Interview Ninja</h2>
+              <h2 className="text-2xl font-bold text-white">Interview Ninja</h2>
             </div>
-            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20 mb-8">
+            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm border border-white/20 mb-8 text-white">
               AI-POWERED INTERVIEW PREPARATION
             </div>
           </div>
