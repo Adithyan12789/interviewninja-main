@@ -37,7 +37,7 @@ const InterviewCard = async ({
   const coverImage = getInterviewCover(role, id);
 
   return (
-    <div className="group relative w-[380px] max-sm:w-full">
+    <div className="group relative w-full">
       {/* Animated gradient border effect */}
       <div className="absolute -inset-[1px] bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500"></div>
       
